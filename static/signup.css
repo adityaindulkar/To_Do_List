@@ -1,0 +1,53 @@
+body {
+      margin: 0;
+      padding: 0;
+      background: #e3f6f5; /* light blue background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ffca3a; /* yellow border */
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #fffbea;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #ff595e; /* red border on focus */
+      box-shadow: 0 0 5px rgba(255, 89, 94, 0.5);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      background-color: #1982c4; /* blue button */
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1261a0;
+    }

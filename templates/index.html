@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TO DO List</h1>
+    </header>
+
+    <form method="POST" action="/submit">
+        <input type="text" name="task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ol>
+        {% for task in tasks %}
+        <li class="task-item">
+            <input type="checkbox" id="task{{ task[0] }}" onchange="deleteTask({{ task[0] }})">
+            <label class="task-label" for="task{{ task[0] }}">{{ task[1] }}</label>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <script>
+        function deleteTask(task_id) {
+            fetch('/delete/' + task_id, { method: 'POST' })
+                .then(() => {
+                    const li = document.getElementById('task' + task_id).closest('li');
+                    li.remove();
+                });
+        }
+    </script>
+</body>
+</html>

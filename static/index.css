@@ -1,0 +1,64 @@
+/* Header with a simple red bar */
+header {
+    background-color: #f44336;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+/* General body styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff8e1;
+    color: #333;
+    padding: 0 20px;
+}
+
+/* Form and task list container */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    padding: 10px 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f44336;
+}
+
+/* Task list */
+ol {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.task-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.task-label {
+    margin-left: 8px;
+}
