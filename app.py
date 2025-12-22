@@ -1,21 +1,23 @@
 from flask import Flask, render_template, url_for, request, redirect, session
-from flaskext.mysql import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from sqlalchemy import create_engine
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Secure random secret key
+# Replace with your actual credentials
+DB_USER = "example_user"
+DB_PASSWORD = "password"
+DB_HOST = "127.0.0.1"
+DB_PORT = 3306
+DB_NAME = "auth"
 
-# MySQL Configuration
-mysql = MySQL()
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'todo'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
+connection_string = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+engine = create_engine(connection_string, echo=True)
 
 def get_db_connection():
-    conn = mysql.connect()
+    conn = engine.raw_connection()
     cursor = conn.cursor()
     return conn, cursor
 
@@ -150,9 +152,19 @@ def index():
     
     conn, cursor = get_db_connection()
     try:
+        
         cursor.execute("SELECT srno, task FROM tasks WHERE username = %s", (session['username'],))
         rows = cursor.fetchall()
-        return render_template('index.html', tasks=rows)
+
+        page = request.args.get('page', 1, type = int)
+        per_page  = 10
+        start = (page-1) * per_page
+        end = start + per_page
+        total_pages = (len(rows) + per_page - 1)//per_page
+
+        tasks_on_page = rows[start:end]
+
+        return render_template('index.html', tasks_on_page = tasks_on_page, page = page, total_pages=total_pages)
     finally:
         cursor.close()
         conn.close()

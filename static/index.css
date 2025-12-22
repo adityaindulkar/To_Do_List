@@ -62,3 +62,96 @@ ol {
 .task-label {
     margin-left: 8px;
 }
+/* Center aligned pagination with box */
+.pagination {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    width: fit-content;
+    margin: 0 auto !important;
+}
+
+.pagination .page-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #007bff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.pagination .page-link:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,123,255,0.3);
+}
+
+.pagination .disabled {
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Center the entire navigation */
+nav[aria-label="Page navigation"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Remove default list styling and center */
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+}
+
+/* Ensure all list items are centered */
+.pagination li {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Make the page info (Page X of Y) centered properly */
+.pagination .page-item.disabled {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100%;
+}
